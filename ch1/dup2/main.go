@@ -41,8 +41,12 @@ func countLines(f *os.File, counts map[string]int) {
 	input := bufio.NewScanner(f)
 	for input.Scan() {
 		counts[input.Text()]++
+		// 上述等价于
+		//line := input.Text()
+		//counts[line] = counts[line] + 1
+
+		//line := input.Text()
+		//counts[line], _ = strconv.Atoi(line)
 	}
 	// NOTE: ignoring potential errors from input.Err()
 }
-
-//!-
